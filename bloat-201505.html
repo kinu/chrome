@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<title>Chromium binary size, May 2015</title>
+<link rel=stylesheet href=webtreemap.css>
+<style>
+h1 {
+  font-family: Verdana;
+  font-size: 24px;
+  line-height: 30px;
+}
+p, ul li {
+  font-family: Georgia;
+  font-size: 16px;
+}
+h1, p, ul, #map {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#map {
+  width: 800px;
+  height: 600px;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+}
+</style>
+
+<h1>Chromium binary size, May 2015</h1>
+
+<p>This is a map of Chromium binary, showing how many bytes do our various bits of code contribute to the final executable. It's built using
+<a href="http://github.com/martine/webtreemap">webtreemap</a>
+and
+<a href="http://github.com/martine/bloat">bloat</a>.
+</p>
+
+<p>
+It's 100MB of json file, be patient-- a static preview image (in grayscale)
+is being shown while it's loaded.
+Once the entire map is loaded, click on a box to zoom in, click on the outermost box to zoom out.</p>
+
+<div id='map'>
+  <img src="preview.png" width="800" height="600">
+</div>
+
+<p>
+References:
+<ul>
+  <li> <a href="http://neugierig.org/software/chromium/bloat/">Chromium binary size, Sep 2010</a> (by Evan Martin)
+  <li> <a href="http://amnoid.de/notes/2014/01/bloat.html">Chromium binary size, Jan 2014</a> (by Nico Weber)
+</ul>
+</p>
+
+<p>
+It looks the Chromium binary size is now about 3 times larger than it was 5 years ago.
+</p>
+
+<script src='webtreemap.js'></script>
+<!--<script src="bloat.json"></script>-->
+<script>
+// Somehow XHR+JSON.parse fails to load this.
+var script = document.createElement('script');
+script.src = 'bloat.json';
+script.onload = onloaded;
+script.onreadystatechange = function() {
+  if (this.readyState == "loaded" || this.readyState == "complete")
+    onloaded();
+}
+document.body.appendChild(script);
+
+function onloaded() {
+  var map = document.getElementById('map');
+  map.removeChild(map.firstChild);
+  appendTreemap(map, kTree);
+}
+</script>
