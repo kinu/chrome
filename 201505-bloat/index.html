@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <title>Chromium binary size, May 2015</title>
-<link rel=stylesheet href=webtreemap.css>
+<link rel=stylesheet href=../webtreemap/webtreemap.css>
 <style>
 h1 {
   font-family: Verdana;
@@ -54,10 +54,9 @@ References:
 It looks the Chromium binary size is now about 3 times larger than it was 5 years ago.
 </p>
 
-<script src='webtreemap.js'></script>
+<script src='../webtreemap/webtreemap.js'></script>
 <!--<script src="bloat.json"></script>-->
 <script>
-// Somehow XHR+JSON.parse fails to load this.
 var script = document.createElement('script');
 script.src = 'bloat.json';
 script.onload = onloaded;
