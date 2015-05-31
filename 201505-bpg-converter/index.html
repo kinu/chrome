@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Converting BPG images to PNG using ServiceWorker</title>
+    </head>
+    <body>
+      <div>
+        <a href="https://github.com/sandropaganotti/bpg-converter">ServiceWorker based bpg-converter</a> powered by Sandro Paganotti.
+      </div>
+      <div id="photos">
+        <img src="images/CameraZOOM-20120430150900269.bpg.png">
+        <img src="images/CameraZOOM-20120501104508935.bpg.png">
+        <img src="images/CameraZOOM-20120501132709052.bpg.png">
+        <img src="images/CameraZOOM-20120501142909533.bpg.png">
+        <img src="images/CameraZOOM-20120501145711783.bpg.png">
+      </div>
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./worker.js', {scope: './'});
+            }
+        </script>
+    </body>
+</html>

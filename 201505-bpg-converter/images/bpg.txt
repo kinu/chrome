@@ -1,0 +1,3 @@
+http://bellard.org/bpg/
+http://webencoder.libbpg.org/
+http://gigazine.net/news/20141215-bpg/
